@@ -59,13 +59,15 @@ function AccordionHeaderOptions(shouldShow, rest){
     const handleCheckForAnswer = () => {
         dispatch(getAnswer(rest.id))
     }
+
+    const showHeaderRefs = path === '/silenceappeal'  || path === '/decisionappeal' || path === '/rescript'
     const answer = useSelector(makeSelectAnswer())
     return (
         <span style={{margin: '10px'}}>
             {shouldShow && (
                 <>
                     <HeaderOptionsCitizen id={rest.id} hideAbort={!isCitizen}/>
-                    <HeaderOptionsRefs mapper={rest.mapper}/>
+                    {showHeaderRefs && (<HeaderOptionsRefs mapper={rest.mapper}/>)}
                     {/* <Button onClick={handleDownloadRescript}>Download Referenced Rescript</Button> */}
                     {/* <HeaderOptionsReferencee title="Referencee"/> */}
                     {!isCitizen &&
