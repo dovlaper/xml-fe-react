@@ -11,4 +11,4 @@ export const RESCRIPTS = '/rescript';
 export const APPEALS = '/appeals'
 export const DECISION_APPEALS = '/decisionappeal';
 export const SILENCE_APPEALS = '/silenceappeal';
-export const REPORTS = '/reports';
+export const REPORTS = '/report';
