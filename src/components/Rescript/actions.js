@@ -9,6 +9,18 @@ export const SEARCH = `${RESCRIPT} SEARCH`;
 export const SET_SEARCH = `${RESCRIPT} SET_SEARCH`;
 export const FILTER = `${RESCRIPT} FILTER`;
 export const SET_FILTER = `${RESCRIPT} SET_FILTER`;
+export const FILTER_BY_APPEAL_ID = `${RESCRIPT} FILTER_BY_APPEAL_ID`;
+export const SET_SINGLE_RESCRIPT = `${RESCRIPT} SET_SINGLE_RESCRIPT`;
+
+export const setSingleRescript = (payload) => ({
+    type: SET_SINGLE_RESCRIPT,
+    payload
+})
+
+export const filterByAppealId = payload => ({
+    type: FILTER_BY_APPEAL_ID,
+    payload
+})
 
 export const getAllRescripts = (payload) => ({
     type: GET_ALL_RESCRIPTS,

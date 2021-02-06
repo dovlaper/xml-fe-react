@@ -1,8 +1,9 @@
 import produce from 'immer';
-import { ADD_RESCRIPT, SET_ALL_RESCRIPTS } from './actions';
+import { ADD_RESCRIPT, SET_ALL_RESCRIPTS, SET_SINGLE_RESCRIPT } from './actions';
 
 export const initialState = {
-  rescripts: []
+  rescripts: [],
+  singleRescript: null,
 };
 
 /* eslint-disable default-case */
@@ -14,6 +15,8 @@ const rescriptReducer = (state = initialState, action) =>
         break;
       case ADD_RESCRIPT:
         draft.rescripts = [...draft.rescripts, action.payload]
+      case SET_SINGLE_RESCRIPT:
+        draft.singleRescript = action.payload
     }
   });
 

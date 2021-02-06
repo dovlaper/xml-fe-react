@@ -17,16 +17,11 @@ export function* fetchUser() {
   }
 }
 
-function forwardTo(location) {
-  console.log('forwardd')
-  // history.push(location);
-}
+
 
 export function* logout() {
   try {
-    console.log("dsadas")
     yield call(removeItem, 'token');
-    yield call(forwardTo, '/login');
   } catch (error) {
     //
   }

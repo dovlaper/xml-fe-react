@@ -107,7 +107,6 @@ export function* search({payload}) {
 
 export function* filter({payload}) {
   try {
-    console.log(payload);
     const {data} = yield call(()=> axios.post(
     `http://localhost:8080/api/silenceappeal/meta/search/`,
     payload,

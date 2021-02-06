@@ -5,10 +5,13 @@ import {
     FILTER,
     setAllRescripts,
     addRescript,
+    FILTER_BY_APPEAL_ID,
+    setSingleRescript,
 } from "./actions";
 import { takeLatest, call, put } from 'redux-saga/effects';
 import axios from 'axios';
 import { getItem } from "../../utils/localStorage";
+import { rescriptXML } from "../../constants/filterDocSpec";
 
 export function* getAllRescriptsSaga({payload}) {
     try {
@@ -75,7 +78,6 @@ export function* search({payload}) {
   
   export function* filter({payload}) {
     try {
-      console.log(payload);
       const {data} = yield call(()=> axios.post(
       `http://localhost:8080/api/rescript/meta/search/`,
       payload,
@@ -96,10 +98,36 @@ export function* search({payload}) {
     }
   }
 
+  export function* filterByAppealId({payload}) {
+    try {
+
+      const xml = rescriptXML(payload);
+      console.log(payload);
+      const {data} = yield call(()=> axios.post(
+      `http://localhost:8080/api/rescript/meta/search/`,
+      xml,
+        {
+          headers: {
+            'Content-Type': 'application/xml',
+            'Authorization': `Bearer ${getItem('token')}`
+          }
+        }
+      ))
+      const parser = new DOMParser();
+  
+      const xmlDoc = parser.parseFromString(data,"text/xml");
+      const list = Array.from(xmlDoc.getElementsByTagNameNS("http://www.resenje.com", "ResenjeRoot")) 
+      yield put(setSingleRescript(list))
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
 export default function* silenceSaga() {
   yield takeLatest(GET_ALL_RESCRIPTS, getAllRescriptsSaga);
   yield takeLatest(CREATE_RESCRIPT, createRescriptSaga);
   yield takeLatest(SEARCH, search);
   yield takeLatest(FILTER, filter);
+  yield takeLatest(FILTER_BY_APPEAL_ID, filterByAppealId);
 }
   

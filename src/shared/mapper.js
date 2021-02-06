@@ -21,7 +21,6 @@ const createRefMapper = (node, route) => {
         const id = urlArray[3]
         const type = urlArray[2];
         const refRoute = routes(type)[route]
-        console.log("ROUTE", route, "REFROUTE", refRoute)
         const port = portMapper[refRoute]
         return {route: refRoute, id, port}
     }

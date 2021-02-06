@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Accordion, Card } from 'react-bootstrap';
 import { XmlEditor } from 'react-xml-editor';
 import ContextAwareToggle from '../../shared/ContextAwareToggle';
@@ -25,6 +25,9 @@ import globalReducer from './reducer';
 import { makeSelectAnswer } from './selectors';
 import AnswerModal from './AnswerModal'
 import createRefMapper from '../../shared/mapper';
+import HeaderOptionsReferencee from './HeaderOptionsReferencee';
+import { filterByAppealId } from '../Rescript/actions';
+import { Button } from '@material-ui/core';
 
 const silenceKey = 'silence';
 const decisionKey = 'decision';
@@ -36,11 +39,17 @@ function AccordionHeaderOptions(shouldShow, rest){
     useInjectSaga({key: decisionKey, saga: decSaga})
     useInjectSaga({key: globalKey, saga: globSaga})
     useInjectReducer({key: globalKey, reducer: globalReducer})
+    const dispatch = useDispatch()
 
     const { role } = getUserFromToken();
     const isCitizen = role === 'ROLE_CITIZEN';
     const route = useLocation().pathname === '/silenceappeal'
-    const dispatch = useDispatch()
+    const path = useLocation().pathname;
+    const handleDownloadRescript = () => {
+        if (path === '/silenceappeal') {
+            dispatch(filterByAppealId(rest.id))
+        }    
+    }
     const handleForwardRescript = () => {
         const action =route ? silForward : decForward;
         dispatch(action(rest.id))
@@ -57,6 +66,8 @@ function AccordionHeaderOptions(shouldShow, rest){
                 <>
                     <HeaderOptionsCitizen id={rest.id} hideAbort={!isCitizen}/>
                     <HeaderOptionsRefs mapper={rest.mapper}/>
+                    {/* <Button onClick={handleDownloadRescript}>Download Referenced Rescript</Button> */}
+                    {/* <HeaderOptionsReferencee title="Referencee"/> */}
                     {!isCitizen &&
                         <HeaderOptionsCommissioner
                             createRescriptCb={() => setShowModal(true)}
@@ -87,6 +98,7 @@ const AppealList = ({list}) => {
     const route = useLocation().pathname;
     const namespace = route === '/silenceappeal' ? 'zalbacutanje' : 'zalbanaodluku';
     const tag = route === `/silenceappeal` ? 'podnosilac_zalbe' : 'Podnosilac';
+    const showReferencee = route === '/request' ||  route === '/silenceappeal' ||  route === '/decisionappeal'
 
     return (
         <div style={{width: '50%', marginLeft: '25%'}}>
@@ -100,6 +112,7 @@ const AppealList = ({list}) => {
                     const appealHref = xmlNode?.getAttribute('about')
                     const isNotified = xmlNode?.getAttribute('obavestio') === "true";
                     const mapper = createRefMapper(xmlNode, route)
+
                     return (
                         <Card key={index}>
                             <ContextAwareToggle

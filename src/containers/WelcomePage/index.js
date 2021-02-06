@@ -8,7 +8,6 @@ function WelcomePage() {
       <title>Welcome - XML</title>
       <div>
         <Link to={LOGIN}>Login</Link>
-        <Link to={REGISTER}>Register</Link>
       </div>
       <main>
         <h1>Hello</h1>

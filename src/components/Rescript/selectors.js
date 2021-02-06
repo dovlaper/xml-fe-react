@@ -9,5 +9,10 @@ const makeSelectRescript = () =>
     substate => substate.rescripts
   );
 
+const makeSelectSingleRescript = () => 
+    createSelector(
+      selectRescript,
+      substate => substate.singleRescript
+    );
 
-export { makeSelectRescript };
+export { makeSelectRescript, makeSelectSingleRescript };

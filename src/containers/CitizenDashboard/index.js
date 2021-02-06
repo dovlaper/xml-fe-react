@@ -12,14 +12,6 @@ const CitizenDashboard = ({props}) => {
     const close = () => setShow(false)
     return  (
       <>
-        <Button onClick={() => setShow(true)} class="btn btn-info">Create Appeal</Button>
-
-        <div style={{display:'inline-flex', width: '100%'}}>
-          <Silence/>
-          <Decision/>
-        </div>
-        <Rescript/>
-        {show && (<CreateAppealModal show={show} close={close} />)}
       </>
     )
 }

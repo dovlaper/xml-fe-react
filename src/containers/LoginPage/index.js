@@ -28,15 +28,10 @@ function LoginPage() {
   return (
     <main>
       <title>Login - XML</title>
-      <h1>Login</h1>
+      <h1 style={{marginLeft:'45%'}}>Login</h1>
         <>
        
           <LoginForm onSubmit={submitLoginForm} isPending={isLoginPending} />
-          <Link to={FORGOT_PASSWORD}>
-            Forgot password?
-          </Link>
-          <br />
-          <Link to={REGISTER}>Register</Link>
         </>
     </main>
   );

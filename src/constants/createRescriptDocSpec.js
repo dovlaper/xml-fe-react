@@ -64,7 +64,6 @@ const createRescriptDocSpec = {
             //     }),
             //     caption: 'Add attribute @label',
             //     hideIf: (xml, id) => {
-            //         console.log(xml, id)
             //         const element = Util.getXmlNode(xml, "testId");
             //         return element && element.$ && typeof element.$.label !== 'undefined';
             //     },
