@@ -8,6 +8,7 @@ import {
     SET_SEARCH,
     FILTER,
     SET_FILTER,
+    FORWARD_APPEAL
 } from "./constants";
 
 export const getDecisionAppeal = (payload) => ({
@@ -53,5 +54,10 @@ export const filter = payload => ({
 
 export const setFilter = payload => ({
     type: SET_FILTER,
+    payload
+})
+
+export const forwardAppeal = payload => ({
+    type: FORWARD_APPEAL,
     payload
 })

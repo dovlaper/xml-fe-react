@@ -37,7 +37,7 @@ export default function LoginForm({ onSubmit, isPending }) {
             {({defaultMessage}) => defaultMessage }
           </ErrorMessage>
         </div>
-        <button disabled={isPending} type="submit">
+        <button type="submit">
           Login
         </button>
       </Form>

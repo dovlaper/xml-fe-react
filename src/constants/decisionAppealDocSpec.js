@@ -103,7 +103,7 @@ const SUBMITTER = {
         <za:Primaoc
             about="http://zalbe/1"
             rel="pred:recipient"
-            href="http://users/2"
+            href="http://users/com@gmail.com"
             >
             <sh:Uloga>Поверенику за информације од јавног значаја и заштиту података о личности</sh:Uloga>
             <sh:Adresa>

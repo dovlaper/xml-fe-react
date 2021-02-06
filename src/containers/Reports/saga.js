@@ -1,4 +1,4 @@
-import { GET_REPORTS } from "./constants";
+import { GET_REPORTS, SEARCH } from "./constants";
 import { takeLatest, call, put } from 'redux-saga/effects';
 import { setReports } from './actions';
 import axios from 'axios';
@@ -82,28 +82,30 @@ export function* getReports() {
 //   }
 // }
 
-// export function* search({payload}) {
-//   try {
-//     const {data} = yield call(()=> axios.get(
-//     `http://localhost:8080/api/silenceappeal/search/${payload}`,
-//     {
-//       headers: {
-//         'Content-Type': 'application/xml',
-//         'Authorization': `Bearer ${getItem('token')}`
-//       }
-//     }
-//   ))
-//   const parser = new DOMParser();
+export function* search({payload}) {
+  try {
+    const {data} = yield call(()=> axios.get(
+    `http://localhost:8080/api/report/meta/search/${payload}`,
+    {
+      headers: {
+        'Content-Type': 'application/xml',
+        'Authorization': `Bearer ${getItem('token')}`
+      }
+    }
+  ))
+  const parser = new DOMParser();
 
-//   const xmlDoc = parser.parseFromString(data,"text/xml");
+  const xmlDoc = parser.parseFromString(data,"text/xml");
   
-//   const list = Array.from(xmlDoc.getElementsByTagNameNS("http://www.zalbacutanje.com", "ZalbaCutanjeRoot")) 
-//   yield put(setSilenceAppeal(list))
-// } catch(error) {
-//   console.log(error)
-// }
-// }
+  const list = Array.from(xmlDoc.getElementsByTagNameNS("http://www.izvestaj.com", "IzvestajRoot")) 
+  yield put(setReports(list))
+} catch(error) {
+  console.log(error)
+}
+}
 export default function* silenceSaga() {
   yield takeLatest(GET_REPORTS, getReports);
+  yield takeLatest(SEARCH, search);
+
 }
   

@@ -3,11 +3,10 @@ import CreateAppealModal from '../CitizenDashboard/CreateAppealModal';
 import Silence from '../../components/Silence';
 import { PageList, AddButtonIcon} from '../../shared/PageList';
 import SearchInput from  '../../shared/SearchInput';
-import Filter from '../../shared/Filter';
+import Filter from '../../shared/SilenceAppealFilter';
 import { getRole } from '../../utils/request';
 import { useDispatch } from 'react-redux';
-import { search } from '../../components/Silence/actions';
-import { getSilenceAppeal } from '../../components/Silence/actions';
+import { getSilenceAppeal, search, filter } from '../../components/Silence/actions';
 
 const SilenceAppeals = () => {
     const [show, setShow] = useState(false)
@@ -23,13 +22,19 @@ const SilenceAppeals = () => {
     }
 
     const isCommissioner = getRole() === "ROLE_COMMISSIONER"
-
+    const handleFilter = (data) => {
+      dispatch(filter(data))
+  }
     return  (
       <>
         <PageList>
           <h2>Silence Appeals</h2>
-          {isCommissioner && (<><SearchInput onChange={handleChange}/>
-          <Filter /></>)}
+          {isCommissioner && (
+            <>
+              <SearchInput onChange={handleChange}/>
+              <Filter onSubmit={handleFilter}/>
+            </>
+          )}
           {getRole() === 'ROLE_CITIZEN' && (<AddButtonIcon onClick={() =>setShow(true)} />)}
         </PageList>
 

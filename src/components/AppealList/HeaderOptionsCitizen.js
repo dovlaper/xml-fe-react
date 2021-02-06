@@ -15,7 +15,7 @@ import {abortAppeal as decisionAbort} from '../Decision/actions';
 const silenceKey='silence';
 const decisionKey='decision';
 
-const HeaderOptionsCitizen = ({id}) => {
+const HeaderOptionsCitizen = ({id, hideAbort}) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [areYouSure, setAreYouSure] = useState(false);
 
@@ -39,7 +39,7 @@ const HeaderOptionsCitizen = ({id}) => {
         setAreYouSure(true)
     }
     const action = route === '/silenceappeal' ? silenceAbort : decisionAbort;
-    const showAbort = route !== '/rescript'
+    const showAbort = route !== '/rescript' && !hideAbort
     const handleAbort = () => {
         dispatch(action(id));
     }

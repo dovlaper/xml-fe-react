@@ -6,7 +6,10 @@ import {
     DOWNLOAD,
     ABORT_APPEAL,
     SEARCH,
-    SET_SEARCH
+    SET_SEARCH,
+    FORWARD_APPEAL,
+    FILTER,
+    SET_FILTER,
 } from "./constants";
 
 export const getSilenceAppeal = (payload) => ({
@@ -46,5 +49,20 @@ export const search = payload => ({
 
 export const setSearch = payload => ({
     type: SET_SEARCH,
+    payload
+})
+
+export const forwardAppeal = payload => ({
+    type: FORWARD_APPEAL,
+    payload
+})
+
+export const filter = payload => ({
+    type: FILTER,
+    payload
+})
+
+export const setFilter = payload => ({
+    type: SET_FILTER,
     payload
 })

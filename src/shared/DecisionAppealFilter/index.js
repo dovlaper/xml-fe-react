@@ -6,13 +6,13 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker
 } from '@material-ui/pickers';
-import {xml} from '../../constants/filterDocSpec';
+import {decisionXML} from '../../constants/filterDocSpec';
 import BaseModal from '../ContextAwareToggle/BaseModal';
 
 const Filter = ({onSubmit}) => {
     const [show, setShow] = useState(false);
     const handleSubmit = () => {
-        const xmlToSend = xml(id,
+        const xmlToSend = decisionXML(id,
             subName,
             subLastName,
             subCity,

@@ -21,7 +21,7 @@ const AreYouSure = ({show, close, onSubmit}) => {
                 aditionalStyle={{marginTop: '300px'}}
             >
                 <h1>Are you sure you want to abort?
-                    <PregnantWoman style={{fontSize:60}}></PregnantWoman>
+                    {/* <PregnantWoman style={{fontSize:60}}></PregnantWoman> */}
                 </h1>
             </BaseModal>
     )

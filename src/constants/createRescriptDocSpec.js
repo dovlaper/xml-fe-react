@@ -103,6 +103,9 @@ export const xmlString = (commissionerHref, appealHref, submitter) => {
         xmlns:pred="http://www.tim21.com/predicate/"
         xsi:schemaLocation="http://www.resenje.com ../xsd/resenje.xsd"
         dopustena_zalba="ne"
+
+        property="pred:submitter"
+        content="${submitter}"
         submitter="${submitter}"
         about="http://resenja/1"
         rel="pred:rescriptForAppeal"

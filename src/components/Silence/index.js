@@ -32,7 +32,6 @@ const Silence = () => {
         }
     }, [dispatch])
 
-
     return (
         <SilenceAppealWrapper>
             <AppealList ref={ref} list={newXml} />    

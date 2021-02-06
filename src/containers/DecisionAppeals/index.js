@@ -4,7 +4,7 @@ import CreateAppealModal from '../CitizenDashboard/CreateAppealModal';
 import { AddButtonIcon, PageList } from '../../shared/PageList';
 import { getRole } from '../../utils/request';
 import SearchInput from '../../shared/SearchInput';
-import Filter from '../../shared/Filter';
+import Filter from '../../shared/DecisionAppealFilter';
 import { useDispatch } from 'react-redux';
 import { getDecisionAppeal, search, filter } from '../../components/Decision/actions';
 
