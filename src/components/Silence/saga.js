@@ -36,7 +36,10 @@ export function* createSilenceSaga({ payload }) {
               "http://localhost:8080/api/silenceappeal/",
               payload,
               {
-                  headers: {'Content-Type': 'application/xml'}
+                headers: {
+                  'Content-Type': 'application/xml',
+                  'Authorization': `Bearer ${getItem('token')}`
+                }
               }
           )
       )
@@ -55,7 +58,10 @@ export function* download({ payload }) {
           axios.get(
               `http://localhost:8080/api/silenceappeal/${payload.id}/generate?type=${payload.type}`,
               {
-                  headers: {'Content-Type': 'application/xml'}
+                headers: {
+                  'Content-Type': 'application/xml',
+                  'Authorization': `Bearer ${getItem('token')}`
+                }
               }
           )
       )
