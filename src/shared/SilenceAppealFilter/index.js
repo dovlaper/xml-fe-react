@@ -102,19 +102,6 @@ const Filter = ({onSubmit}) => {
                         value={subStreet}
                         onChange={e => setSubStreet(e.target.value)}
                     />
-                    <FormControl variant="outlined" style={{margin: '20px'}}>
-                        <InputLabel id="demo-simple-select-outlined-label">Submitter's type</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-outlined-label"
-                            id="demo-simple-select-outlined"
-                            value={subType}
-                            onChange={e => setSubType(e.target.value)}
-                            label="Submitter's Type"
-                        >
-                            <MenuItem value={'FIZICKO_LICE'}>Fizicko Lice</MenuItem>
-                            <MenuItem value={'PRAVNO_LICE'}>Pravno Lice</MenuItem>
-                        </Select>
-                    </FormControl>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             style={{margin: '20px', width: "225px"}}

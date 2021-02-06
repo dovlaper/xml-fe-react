@@ -11,7 +11,7 @@ const HeaderOptionsRefs = ({mapper}) => {
     const handleClose = () => {
         setAnchorEl(null);
       };
-    const {route, id} = mapper;
+    const {route, id, port} = mapper;
     return (
         <>
 
@@ -27,16 +27,16 @@ const HeaderOptionsRefs = ({mapper}) => {
                 >
                 
                     <MenuItem>
-                        <Link href={`http://localhost:8080/api/${route}/${id}/generate?type=pdf`}>Download PDF</Link>
+                        <Link href={`http://localhost:${port}/api/${route}/${id}/generate?type=pdf`}>Download PDF</Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link href={`http://localhost:8080/api/${route}/${id}/generate?type=html`}>Download HTML</Link>
+                        <Link href={`http://localhost:${port}/api/${route}/${id}/generate?type=html`}>Download HTML</Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link href={`http://localhost:8080/api/${route}/meta/json/${id}`}>Export Metadata JSON</Link>
+                        <Link href={`http://localhost:${port}/api/${route}/meta/json/${id}`}>Export Metadata JSON</Link>
                     </MenuItem>
                     <MenuItem>
-                        <Link href={`http://localhost:8080/api/${route}/meta/rdf/${id}`}>Export Metadata RDF</Link>
+                        <Link href={`http://localhost:${port}/api/${route}/meta/rdf/${id}`}>Export Metadata RDF</Link>
                     </MenuItem>
             </Menu> 
             </>
