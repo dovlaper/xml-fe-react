@@ -13,9 +13,9 @@ import { getItem } from "../../utils/localStorage";
 export function* getAllRescriptsSaga({payload}) {
     try {
         const all = payload || '';
-        const { data } = yield call(() => 
+        const { data } = yield call(() =>
           axios.get(
-            `http://localhost:8080/api/rescript/${all}`, 
+            `http://localhost:8080/api/rescript/${all}`,
             {
               data: null,
               headers: {

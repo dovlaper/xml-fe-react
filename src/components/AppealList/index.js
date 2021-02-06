@@ -24,6 +24,7 @@ import { useInjectReducer } from '../../utils/injectReducer';
 import globalReducer from './reducer';
 import { makeSelectAnswer } from './selectors';
 import AnswerModal from './AnswerModal'
+import createRefMapper from '../../shared/mapper';
 
 const silenceKey = 'silence';
 const decisionKey = 'decision';
@@ -55,7 +56,7 @@ function AccordionHeaderOptions(shouldShow, rest){
             {shouldShow && (
                 <>
                     <HeaderOptionsCitizen id={rest.id} hideAbort={!isCitizen}/>
-                    <HeaderOptionsRefs id={rest.id} hideAbort={!isCitizen}/>
+                    <HeaderOptionsRefs mapper={rest.mapper}/>
                     {!isCitizen &&
                         <HeaderOptionsCommissioner
                             createRescriptCb={() => setShowModal(true)}
@@ -98,7 +99,7 @@ const AppealList = ({list}) => {
                     const xmlString = serializer.serializeToString(xmlNode);
                     const appealHref = xmlNode?.getAttribute('about')
                     const isNotified = xmlNode?.getAttribute('obavestio') === "true";
-                    // const mapper = createRefMapper(xmlNode, route)
+                    const mapper = createRefMapper(xmlNode, route)
                     return (
                         <Card key={index}>
                             <ContextAwareToggle
@@ -109,6 +110,7 @@ const AppealList = ({list}) => {
                                 commissionerHref={`http://users/${user?.email}`}
                                 submitter={submitter}
                                 isNotified={isNotified}
+                                mapper={mapper}
                             >
                                 {AccordionHeaderOptions}
                             </ContextAwareToggle>

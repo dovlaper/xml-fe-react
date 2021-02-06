@@ -107,7 +107,6 @@ export const xmlString = (commissionerHref, appealHref, submitter) => {
         property="pred:submitter"
         content="${submitter}"
         submitter="${submitter}"
-        about="http://resenja/1"
         rel="pred:rescriptForAppeal"
         href="${appealHref}"
         >

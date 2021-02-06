@@ -92,7 +92,6 @@ const SUBMITTER = {
     xsi:schemaLocation="http://www.zalbanaodluku.com ../xsd/zalbanaodluku.xsd"
     xmlns:pred="http://www.tim21.com/predicate/"
     
-    about="http://zalbe/1"
     rel="pred:appealForRequest"
     href="http://zahtevi/${requestId}"
 >
@@ -101,7 +100,6 @@ const SUBMITTER = {
             Naslov
         </za:Naslov>
         <za:Primaoc
-            about="http://zalbe/1"
             rel="pred:recipient"
             href="http://users/com@gmail.com"
             >
@@ -127,7 +125,6 @@ const SUBMITTER = {
         <za:Grad>Unesite Grad</za:Grad>
         <za:Datum>${new Date().toLocaleDateString("en-CA")}</za:Datum>
         <za:Podnosilac 
-            about="http://zalbe/1"
             rel="pred:submitter"
             href="http://users/${creatorId}"
         >
