@@ -55,7 +55,7 @@ const CreateAppealModal = ({show, close }) => {
         }
     }
 
-    const citizenId = useMemo(() => getUserFromToken().email)
+    const citizenId = useMemo(() => getUserFromToken()?.email)
 
     const XmlComponent = forwardRef((props, ref)=>{
         const docSpec = isSilence ? silenceAppealDocSpec : decisionAppealDocSpec

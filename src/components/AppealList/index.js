@@ -101,7 +101,7 @@ const AppealList = ({list}) => {
                                 title={cardName}
                                 appealHref={appealHref}
                                 id={cardName}
-                                commissionerHref={`http://users/${user.email}`}
+                                commissionerHref={`http://users/${user?.email}`}
                                 submitter={submitter}
                                 isNotified={isNotified}
                             >
