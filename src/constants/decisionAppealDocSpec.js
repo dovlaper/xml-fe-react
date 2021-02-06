@@ -123,7 +123,7 @@ const SUBMITTER = {
                 
         </za:Tekst_zalbe>
         <za:Grad>Unesite Grad</za:Grad>
-        <za:Datum>${new Date().toLocaleDateString("en-CA")}</za:Datum>
+        <za:Datum property="pred:appealDate">${new Date().toLocaleDateString("en-CA")}</za:Datum>
         <za:Podnosilac 
             rel="pred:submitter"
             href="http://users/${creatorId}"
