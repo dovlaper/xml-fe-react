@@ -213,7 +213,6 @@ export const xmlString = (commissionerHref, appealHref, submitter) => {
     </Obrazlozenje>
     
     <Poverenik 
-        about="http://resenja/1"
         rel="pred:commisioner"
         href="${commissionerHref}"
         >

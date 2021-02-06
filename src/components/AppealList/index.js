@@ -11,6 +11,7 @@ import { useInjectSaga } from '../../utils/injectSaga';
 import saga from '../Silence/saga';
 
 import HeaderOptionsCommissioner from './HeaderOptionsCommissioner';
+import HeaderOptionsRefs from './HeaderOptionsRefs';
 import HeaderOptionsCitizen from './HeaderOptionsCitizen';
 import decSaga from '../Decision/saga';
 import silSaga from '../Silence/saga';
@@ -54,6 +55,7 @@ function AccordionHeaderOptions(shouldShow, rest){
             {shouldShow && (
                 <>
                     <HeaderOptionsCitizen id={rest.id} hideAbort={!isCitizen}/>
+                    <HeaderOptionsRefs id={rest.id} hideAbort={!isCitizen}/>
                     {!isCitizen &&
                         <HeaderOptionsCommissioner
                             createRescriptCb={() => setShowModal(true)}
@@ -80,8 +82,10 @@ const AppealList = ({list}) => {
     const itemEls = useRef(new Array())
     const [ xml, setXml] = useState('')
     const [current, setCurrent] = useState(null)
-    const namespace = useLocation().pathname === '/silenceappeal' ? 'zalbacutanje' : 'zalbanaodluku';
-    const tag = useLocation().pathname === `/silenceappeal` ? 'podnosilac_zalbe' : 'Podnosilac';
+    
+    const route = useLocation().pathname;
+    const namespace = route === '/silenceappeal' ? 'zalbacutanje' : 'zalbanaodluku';
+    const tag = route === `/silenceappeal` ? 'podnosilac_zalbe' : 'Podnosilac';
 
     return (
         <div style={{width: '50%', marginLeft: '25%'}}>
@@ -94,6 +98,7 @@ const AppealList = ({list}) => {
                     const xmlString = serializer.serializeToString(xmlNode);
                     const appealHref = xmlNode?.getAttribute('about')
                     const isNotified = xmlNode?.getAttribute('obavestio') === "true";
+                    // const mapper = createRefMapper(xmlNode, route)
                     return (
                         <Card key={index}>
                             <ContextAwareToggle
